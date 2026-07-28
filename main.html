@@ -8,21 +8,35 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+    function secondHighest(arr) {
+        let largest = -Infinity;
+        let secondLargest = -Infinity;
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+        for (let i = 0; i < arr.length; i++) {
+            let num = Number(arr[i]);
+
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest && num !== largest) {
+                secondLargest = num;
+            }
+        }
+
+        return secondLargest;
+    }
+
+    function Main() {
+        var n = prompt("Enter the number of elements");
+        var arr = [];
+        for (var i = 0; i < n; i++) {
+            arr[i] = prompt("Enter element " + (i + 1));
+        }
+        alert(secondHighest(arr));
+    }
+
+    Main();
+</script>
 
     <script type="text/javascript" src="./script.js">
 </script>
