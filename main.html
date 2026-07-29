@@ -1,46 +1,59 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <title>Second Highest Number</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>	
-	<script>
-    function secondHighest(arr) {
-        let largest = -Infinity;
-        let secondLargest = -Infinity;
+<body>
 
-        for (let i = 0; i < arr.length; i++) {
-            let num = Number(arr[i]);
+<script>
+function secondHighest(arr) {
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
 
-            if (num > largest) {
-                secondLargest = largest;
-                largest = num;
-            } else if (num > secondLargest && num !== largest) {
-                secondLargest = num;
-            }
+    for (let i = 0; i < arr.length; i++) {
+        let num = Number(arr[i]);
+
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num !== largest) {
+            secondLargest = num;
         }
-
-        return secondLargest;
     }
 
-    function Main() {
-        var n = prompt("Enter the number of elements");
-        var arr = [];
-        for (var i = 0; i < n; i++) {
-            arr[i] = prompt("Enter element " + (i + 1));
-        }
-        alert(secondHighest(arr));
+    return secondLargest === -Infinity
+        ? "Second highest element does not exist."
+        : secondLargest;
+}
+
+function Main() {
+    let n = Number(prompt("Enter the number of elements"));
+
+    if (isNaN(n) || n <= 0) {
+        alert("Please enter a valid positive number.");
+        return;
     }
 
-    Main();
-</script>
+    let arr = [];
 
-    <script type="text/javascript" src="./script.js">
+    for (let i = 0; i < n; i++) {
+        let value = Number(prompt("Enter element " + (i + 1)));
+
+        if (isNaN(value)) {
+            alert("Invalid input. Please enter only numbers.");
+            return;
+        }
+
+        arr.push(value);
+    }
+
+    alert(secondHighest(arr));
+}
+
+Main();
 </script>
 
 </body>
-
 </html>
